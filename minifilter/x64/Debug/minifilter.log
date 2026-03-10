@@ -1,0 +1,24 @@
+﻿  Building 'minifilter' with toolset 'WindowsKernelModeDriver10.0' and the 'Universal' target platform.
+  Stamping x64\Debug\minifilter.inf
+  Both Version and Date must be specified to stamp DriverVer
+C:\Users\melvin\source\repos\minifilter\minifilter\minifilter.inf(25-25): warning 1205: Section [minifilter.DriverFiles] referenced from CopyFiles and DelFiles directive.
+  minifilter.vcxproj -> C:\Users\melvin\source\repos\minifilter\x64\Debug\minifilter.sys
+  Driver is 'Universal'.
+  ........................
+  Signability test complete.
+  
+  Errors:
+  None
+  
+  Warnings:
+  None
+  
+  Catalog generation complete.
+  C:\Users\melvin\source\repos\minifilter\x64\Debug\minifilter\minifilter.cat
+  Set catalog attribute.
+  WdkVersion: 10.0.26100.0
+  Set catalog attribute.
+  WdkAssemblyVersion: 10.0.26100.4202
+  Done Adding Additional Store
+  Successfully signed: C:\Users\melvin\source\repos\minifilter\x64\Debug\minifilter\minifilter.cat
+  

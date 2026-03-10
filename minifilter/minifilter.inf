@@ -1,0 +1,66 @@
+[Version]
+Signature   = "$WINDOWS NT$"
+Class       = "ActivityMonitor"
+ClassGuid   = {b86dff51-a31e-4bac-b3cf-e8cfe75c9fc2}
+Provider    = %Msft%
+DriverVer   = 02/08/2025,1.0.0.2
+CatalogFile = minifilter.cat
+PnpLockdown = 1
+
+[DefaultUninstall.NTamd64]
+DelFiles   = minifilter.DriverFiles
+DelReg     = minifilter.DelRegistry
+LegacyUninstall = 1
+
+[minifilter.DelRegistry]
+HKR,Parameters
+HKR,Instances
+
+[SourceDisksNames]
+1 = %DiskName%,,,""
+
+[SourceDisksFiles]
+minifilter.sys = 1,,
+
+[minifilter.DriverFiles]
+minifilter.sys
+
+[DefaultUninstall.NTamd64.Services]
+DelService = minifilter,0x200
+
+[DestinationDirs]
+minifilter.DriverFiles = 12
+minifilter.UserFiles  = 12
+
+[DefaultInstall.NTamd64]
+CopyFiles = minifilter.DriverFiles
+
+[DefaultInstall.NTamd64.Services]
+AddService = %ServiceName%,,minifilter.Service
+
+
+[minifilter.Service]
+DisplayName    = %ServiceName%
+Description    = %ServiceDesc%
+ServiceBinary  = %12%\minifilter.sys
+ServiceType    = 2 ;    SERVICE_FILE_SYSTEM_DRIVER
+StartType      = 3 ;    SERVICE_DEMAND_START
+ErrorControl   = 1 ;    SERVICE_ERROR_NORMAL
+LoadOrderGroup = "FSFilter Activity Monitor"
+AddReg         = minifilter.AddRegistry
+Dependencies   = FltMgr
+
+[minifilter.AddRegistry]
+HKR,"Parameters\Instances","DefaultInstance",0x00000000,%DefaultInstance%
+HKR,"Parameters\Instances\"%Instance1.Name%,"Altitude",0x00000000,%Instance1.Altitude%
+HKR,"Parameters\Instances\"%Instance1.Name%,"Flags",0x00010001,%Instance1.Flags%
+
+[Strings]
+DiskName = "MiniFilter Install Disk"
+Msft = "idks"
+ServiceDesc = "minifilter driver"
+ServiceName = "minifilter"
+DefaultInstance    = "Minispy"
+Instance1.Name     = "Minispy"
+Instance1.Altitude = "360000"
+Instance1.Flags    = 0x0000000
